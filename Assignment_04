@@ -1,0 +1,15 @@
+string $selList[] = `ls -sl`;
+for ($item in $selList) {
+	$meshesType = (nodeType($item)=="mesh");
+	$jointType = (nodeType($item)=="joint");
+	$transform = (nodeType($item)=="transform");
+}
+
+
+$meshSize = size($meshesType);
+$jointSize = size($jointType);
+$transformSize = size($transformType);
+
+print ("Number of joints in the scene: " + $jointSize + "\n");
+print ("Number of meshes in the scene: " + $meshSize + "\n");
+print ("Number of transforms in the scene: " + $transformSize + "\n");

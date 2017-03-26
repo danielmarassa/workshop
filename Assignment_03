@@ -1,0 +1,3 @@
+string $selList[] = `ls -sl`;
+$stringSize = size($selList);
+print ("There is/are " + $stringSize + " nodes selected.");

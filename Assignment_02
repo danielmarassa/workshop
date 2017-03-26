@@ -1,0 +1,13 @@
+string $selList[] = `ls -sl`;
+for ($item in $selList) {
+    move -r 0 1.5 0;
+}
+
+
+from maya import cmds
+
+selList = cmds.ls(selection=True)
+for obj in selList:
+	cmds.move(0, 1.5, 0, relative=True)
+	
+	

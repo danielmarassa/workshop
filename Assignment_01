@@ -1,0 +1,39 @@
+//Creates 3 Spheres placed 5 units apart from each other in X.
+polySphere -r 1 -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1;
+setAttr "pSphere1.translateX" 5;
+polySphere -r 1 -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1;
+polySphere -r 1 -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1;
+setAttr "pSphere3.translateX" -5;
+
+//Creates 3 Cubes placed 5 units apart from each other in X, and 3 units above.
+polyCube -w 1 -h 1 -d 1 -sx 1 -sy 1 -sz 1 -ax 0 1 0 -cuv 4 -ch 1;
+setAttr "pCube1.translateX" -5;
+setAttr "pCube1.translateY" 3;
+polyCube -w 1 -h 1 -d 1 -sx 1 -sy 1 -sz 1 -ax 0 1 0 -cuv 4 -ch 1;
+setAttr "pCube2.translateX" 0;
+setAttr "pCube2.translateY" 3;
+polyCube -w 1 -h 1 -d 1 -sx 1 -sy 1 -sz 1 -ax 0 1 0 -cuv 4 -ch 1;
+setAttr "pCube3.translateX" 5;
+setAttr "pCube3.translateY" 3;
+
+
+shadingNode -asShader lambert;
+sets -renderable true -noSurfaceShader true -empty -name lambert2SG;
+connectAttr -f lambert2.outColor lambert2SG.surfaceShader;
+setAttr "lambert2.color" -type double3 1 0 0 ;
+select -r pCube1 ;
+sets -e -forceElement lambert2SG;
+
+shadingNode -asShader lambert;
+sets -renderable true -noSurfaceShader true -empty -name lambert3SG;
+connectAttr -f lambert3.outColor lambert3SG.surfaceShader;
+setAttr "lambert3.color" -type double3 0 1 0 ;
+select -r pCube2 ;
+sets -e -forceElement lambert3SG;
+
+shadingNode -asShader lambert;
+sets -renderable true -noSurfaceShader true -empty -name lambert4SG;
+connectAttr -f lambert4.outColor lambert4SG.surfaceShader;
+setAttr "lambert4.color" -type double3 0 0 1 ;
+select -r pCube3 ;
+sets -e -forceElement lambert4SG;
