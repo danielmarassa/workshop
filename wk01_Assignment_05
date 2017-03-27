@@ -3,14 +3,17 @@ if (`window -q -ex $winName`) {
     deleteUI $winName;
 }
 
+proc func() {
+		print("Welcome Home, " + `textField -q -tx textFieldName` + "\n");
+	}
+
 window -h 100 -w 100 -s 1 -t "This is a the Assignment 04" $winName;
     columnLayout -adj 1 columnName;
         text -h 5 -l "";
         text -l "This will work great!";
         text -h 5 -l "";
-        button -w 200 -h 50 -c "string $sel = `textField -q -tx textFieldName`" -l "click me!" buttonA;
+        button -w 200 -h 50  -l "click me!" -c "func" buttonA;
         textField -w 200 textFieldName;
+        string $nameFrom = `textField -q -tx textFieldName`;
     setParent..;
 showWindow $winName;
-
-textField -q -tx textFieldName;
